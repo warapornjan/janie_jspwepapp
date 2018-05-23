@@ -60,6 +60,12 @@
                     <input class="btn btn-warning" value="EDIT" type="button" id="editbutton" onclick="document.location.href = 'AddServlet?mode=edit&books_id=<%=data.get(i).getBooks_id()%>'">
 <!--               <input class="btn btn-warning" value="EDIT" type="button" id="editbutton" >-->
                 </center> 
+                <jsp:include page="EditForm.jsp" >
+                    <jsp:param name="books_id" value="<%=data.get(i).getBooks_id()%>" />
+                    <jsp:param name="bookname" value="<%=data.get(i).getBookname()%>" />
+                    <jsp:param name="author" value="<%=data.get(i).getBookname()%>" />
+                <jsp:param name="price" value="<%=data.get(i).getPrice()%>" />
+                </jsp:include>
                 </td>
                 </tr>
                 <% }
