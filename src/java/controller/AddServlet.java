@@ -150,9 +150,10 @@ public class AddServlet extends HttpServlet {
                 pst.setString(4, bookid);
              
                 pst.execute();
+                out.print("ok");
             }
 
-
+// Need change this
            response.sendRedirect("ListBookServlet");
             // out.close();
 

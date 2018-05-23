@@ -56,189 +56,320 @@
 
                     <td width="21%">
                 <center>
-                    <input class="btn btn-danger" value="DELETE" type="button" id="deletebutton" onclick="document.location.href = 'ListBookServlet?mode=delete&books_id=<%=data.get(i).getBooks_id()%>'" />
-                    <input class="btn btn-warning" value="EDIT" type="button" id="editbutton" onclick="document.location.href = 'AddServlet?mode=edit&books_id=<%=data.get(i).getBooks_id()%>'">
-<!--               <input class="btn btn-warning" value="EDIT" type="button" id="editbutton" >-->
-                </center> 
-                <jsp:include page="EditForm.jsp" >
-                    <jsp:param name="books_id" value="<%=data.get(i).getBooks_id()%>" />
-                    <jsp:param name="bookname" value="<%=data.get(i).getBookname()%>" />
-                    <jsp:param name="author" value="<%=data.get(i).getBookname()%>" />
-                <jsp:param name="price" value="<%=data.get(i).getPrice()%>" />
-                </jsp:include>
-                </td>
-                </tr>
-                <% }
-                    }
-                %>
-                <tr>
-                    <td colspan="5" align="center">
-                        <input class="btn btn-success" type="button" data-toggle="modal" data-target="#myModal" id="addbutton" value="ADD">
+                    <input class="btn btn-danger" value="DELETE" type="button" class="deletebutton" onclick="deletebutton(<%=data.get(i).getBooks_id()%>, this)"  />
+<!--                    onclick="document.location.href = 'ListBookServlet?mode=delete&books_id=<%=data.get(i).getBooks_id()%>'"-->
+<!--                    <input class="btn btn-warning" value="EDIT" type="button" id="editbutton" onclick="document.location.href = 'AddServlet?mode=edit&books_id=<%=data.get(i).getBooks_id()%>'">-->
 
-                        <!--onclick="document.location.href = 'AddServlet'"-->
-                        <!-- Modal -->
+                    <input class="btn btn-success" type="button" data-toggle="modal" data-target="#myModal" id="editbutton" value="EDIT">
 
-                        
+                    <!--onclick="document.location.href = 'AddServlet'"-->
+                    <!-- Modal -->
 
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
-                            
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" id="myModalLabel">ADD NEW BOOK </h4>
-                                    </div>
 
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3"> <label for="recipient-name" class="control-label">BOOK ID:</label> </div>
-                                                    <div class="col-md-9"><input type="text" class="form-control" id="books_id"> </div>
-                                                    
-                                                </div>
+
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">EDIT BOOK </h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3"> <label for="recipient-name" class="control-label">BOOK ID:</label> </div>
+                                                <div class="col-md-9"><input type="text" class="form-control" id="books_id"> </div>
+
                                             </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3"> <label for="message-text" class="control-label">Book name:</label></div>
-                                                    <div class="col-md-9"> <input type="text"  class="form-control" id="bookname"></textarea></div>
-                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3"> <label for="message-text" class="control-label">Book name:</label></div>
+                                                <div class="col-md-9"> <input type="text"  class="form-control" id="bookname"></textarea></div>
                                             </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3"> <label for="message-text" class="control-label">Author:</label></div>
-                                                    <div class="col-md-9"> <input type="text"  class="form-control" id="author"></textarea></div>
-                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3"> <label for="message-text" class="control-label">Author:</label></div>
+                                                <div class="col-md-9"> <input type="text"  class="form-control" id="author"></textarea></div>
                                             </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3"> <label for="message-text" class="control-label">Price:</label></div>
-                                                    <div class="col-md-9"> <input type="text"  class="form-control" id="price"></textarea></div>
-                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3"> <label for="message-text" class="control-label">Price:</label></div>
+                                                <div class="col-md-9"> <input type="text"  class="form-control" id="price"></textarea></div>
                                             </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3"> <label for="message-text" class="control-label"> PPADD: </label></div>
-                                                    <div class="col-md-9"> <input type="text"  class="form-control" id="PPADD"></textarea></div>
-                                                </div>
+                                        </div>
+                                        <!--
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3"> <label for="message-text" class="control-label"> PPADD: </label></div>
+                                                <div class="col-md-9"> <input type="text"  class="form-control" id="PPADD"></textarea></div>
                                             </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3"> <label for="message-text" class="control-label"> PPDELETE: </label></div>
-                                                    <div class="col-md-9"> <input type="text"  class="form-control" id="PPDELETE"></textarea></div>
-                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3"> <label for="message-text" class="control-label"> PPDELETE: </label></div>
+                                                <div class="col-md-9"> <input type="text"  class="form-control" id="PPDELETE"></textarea></div>
                                             </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3"> <label for="message-text" class="control-label"> PPEDIT: </label></div>
-                                                    <div class="col-md-9"> <input type="text"  class="form-control" id="PPEDIT"></textarea></div>
-                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3"> <label for="message-text" class="control-label"> PPEDIT: </label></div>
+                                                <div class="col-md-9"> <input type="text"  class="form-control" id="PPEDIT"></textarea></div>
                                             </div>
-                                        </form>
+                                        </div> -->
+                                    </form>
 
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" id="savenewaccount"> Save <button>
-                                                </div>
-                                                </div>
-                                                </div>
-                                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary" id="saveupdateaccount"> Save <button>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            <!--               <input class="btn btn-warning" value="EDIT" type="button" id="editbutton" >-->
+                                            </center> 
 
+                                            </td>
+                                            </tr>
+                                            <% }
+                                                }
+                                            %>
+                                            <tr>
+                                                <td colspan="5" align="center">
+                                                    <input class="btn btn-success" type="button" data-toggle="modal" data-target="#addModal" id="addbutton" value="ADD">
 
-
-
-                                                </td>
-                                                </tr>
-                                                </table>
-
-                                                </center>
-                                                </div>
-
-                                                </body>
-                                                <script>
-                                                    $('#savenewaccount').click(function () {
-                                                        var obj = {"bookid": $('#books_id').val(), 
-                                                            "bookname": $('#bookname').val(),
-                                                            "author": $('#author').val(), 
-                                                            "price": $('#price').val(), 
-                                                            "mode": $('#PPADD').val()};
-//                                                        obj.bookid = $('#books_id').val();
-//                                                        obj.bookname = $('#bookname').val();
-//                                                        obj.author = $('#author').val();
-//                                                        obj.price = $('#price').val();
-//                                                        obj.mode = $('#PPADD').val();
-
-                                                        $.ajax({
-                                                            url: 'AddServlet',
-                                                            //                           contentType: "application/json",
-                                                            //   dataType: "json",
-                                                            //   dataType: 'text',
-                                                            type: 'POST',
-                                                            data: obj,
-                                                            success: function (data) {
-
-                                                                //alert(data);
-                                                                if(data=="ok"){
-                                                                    alert("Alraedy save");
-                                                                    location.reload();
-                                                                }else{
-                                                                    
-                                                                }
-
-                                                            }, error: function (request, textStatus, errorThrown) {
-                                                                alert("ERROR");
-                                                            }
-                                                        }
-                                                        ); // close ajax
-
-                                                        //jQuery("#myModal").remove();
-                                                        //response.sendRedirect("ListBookServlet");
-                                                        $('#myModal').modal('hide');
-                                                        //location.reload();
-
-                                                    });
-                                                    //    function someFunction(data) {
-                                                    //        // Do something with your data
-                                                    //        //response.sendRedirect("ListBookServlet");
-                                                    //
-                                                    //    }
-
-
-//                                                    if (id == "addbutton") {
-//                                                        $('#addbutton').click(function () {
-//                                                            $('#PPADD').val("add");
-//                                                        });
-//                                                    } else if (id == "delete") {
-//                                                        $('#deletebutton').click(function () {
-//                                                            $('#PPDELETE').val("delete");
-//                                                        });
-//                                                    } else if (id = "edit") {
-//                                                        $('#editbutton').click(function () {
-//                                                            $('#PPEDIT').val("edit");
-//                                                        });
-//                                                    }
-                                                    $('#addbutton').click(function () {
-                                                        $('#PPADD').val("add");
-                                                    });
-                                                    $('#deletebutton').click(function () {
-                                                        $('#PPDELETE').val("delete");
-                                                    });
-                                                    $('#editbutton').click(function () {
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        $('#PPEDIT').val("edit");
-                                                    });
+                                                    <!--onclick="document.location.href = 'AddServlet'"-->
+                                                    <!-- Modal -->
 
 
 
-                                                </script>    
-                                                </html>
+                                                    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                    <h4 class="modal-title" id="myModalLabel">ADD NEW BOOK </h4>
+                                                                </div>
+
+                                                                <div class="modal-body">
+                                                                    <form>
+                                                                        <div class="form-group">
+                                                                            <div class="row">
+                                                                                <div class="col-md-3"> <label for="recipient-name" class="control-label">BOOK ID:</label> </div>
+                                                                                <div class="col-md-9"><input type="text" class="form-control" id="add_books_id"> </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <div class="row">
+                                                                                <div class="col-md-3"> <label for="message-text" class="control-label">Book name:</label></div>
+                                                                                <div class="col-md-9"> <input type="text"  class="form-control" id="add_bookname"></textarea></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <div class="row">
+                                                                                <div class="col-md-3"> <label for="message-text" class="control-label">Author:</label></div>
+                                                                                <div class="col-md-9"> <input type="text"  class="form-control" id="add_author"></textarea></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <div class="row">
+                                                                                <div class="col-md-3"> <label for="message-text" class="control-label">Price:</label></div>
+                                                                                <div class="col-md-9"> <input type="text"  class="form-control" id="add_price"></textarea></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--
+                                                                        <div class="form-group">
+                                                                            <div class="row">
+                                                                                <div class="col-md-3"> <label for="message-text" class="control-label"> PPADD: </label></div>
+                                                                                <div class="col-md-9"> <input type="text"  class="form-control" id="PPADD"></textarea></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <div class="row">
+                                                                                <div class="col-md-3"> <label for="message-text" class="control-label"> PPDELETE: </label></div>
+                                                                                <div class="col-md-9"> <input type="text"  class="form-control" id="PPDELETE"></textarea></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <div class="row">
+                                                                                <div class="col-md-3"> <label for="message-text" class="control-label"> PPEDIT: </label></div>
+                                                                                <div class="col-md-9"> <input type="text"  class="form-control" id="PPEDIT"></textarea></div>
+                                                                            </div>
+                                                                        </div> -->
+                                                                    </form>
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary" id="savenewaccount"> Save <button>
+                                                                            </div>
+                                                                            </div>
+                                                                            </div>
+                                                                            </div>
+
+
+
+
+                                                                            </td>
+                                                                            </tr>
+                                                                            </table>
+
+                                                                            </center>
+                                                                            </div>
+
+                                                                            </body>
+                                                                            <script>
+                                                                                $('#savenewaccount').click(function () {
+                                                                                   // $('#PPADD').val("add");
+                                                                                    var obj = {"bookid": $('#add_books_id').val(),
+                                                                                        "bookname": $('#add_bookname').val(),
+                                                                                        "author": $('#add_author').val(),
+                                                                                        "price": $('#add_price').val(),
+                                                                                        "mode": "add"};//var obj
+                                                                                    //                                                        obj.bookid = $('#books_id').val();
+                                                                                    //                                                        obj.bookname = $('#bookname').val();
+                                                                                    //                                                        obj.author = $('#author').val();
+                                                                                    //                                                        obj.price = $('#price').val();
+                                                                                    //                                                        obj.mode = $('#PPADD').val();
+
+                                                                                    $.ajax({
+                                                                                        url: 'AddServlet',
+                                                                                        //                           contentType: "application/json",
+                                                                                        //   dataType: "json",
+                                                                                        //   dataType: 'text',
+                                                                                        type: 'POST',
+                                                                                        data: obj,
+                                                                                        success: function (data) {
+
+                                                                                            //alert(data);
+                                                                                           // if (data == "ok") {
+                                                                                                alert("Alraedy save");
+                                                                                                location.reload();
+                                                                                            //} else {
+
+                                                                                            //}
+
+                                                                                        }//success function 
+                                                                                        , error: function (request, textStatus, errorThrown) {
+                                                                                            alert("ERROR");
+                                                                                        }//error function
+                                                                                    }); // close ajax
+
+                                                                                    $('#myModal').modal('hide');
+                                                                                    //location.reload();
+
+                                                                                });
+                                                                               //savenewaccount
+
+
+                                                                                //saveupdateaccount
+                                                                                $('#saveupdateaccount').click(function () {
+                                                                                    
+                                                                                    var obj = {"bookid": $('#books_id').val(),
+                                                                                        "bookname": $('#bookname').val(),
+                                                                                        "author": $('#author').val(),
+                                                                                        "price": $('#price').val(),
+                                                                                        "mode": "edit"};
+                                                                                    //                                                        obj.bookid = $('#books_id').val();
+                                                                                    //                                                        obj.bookname = $('#bookname').val();
+                                                                                    //                                                        obj.author = $('#author').val();
+                                                                                    //                                                        obj.price = $('#price').val();
+                                                                                    //                                                        obj.mode = $('#PPADD').val();
+
+                                                                                    $.ajax({
+                                                                                        url: 'AddServlet',
+                                                                                        //                           contentType: "application/json",
+                                                                                        //   dataType: "json",
+                                                                                        //   dataType: 'text',
+                                                                                        type: 'POST',
+                                                                                        data: obj,
+                                                                                        success: function (data) {
+
+                                                                                            //alert(data);
+                                                                                         //   if (data == "ok") {
+                                                                                                alert("Alraedy save");
+                                                                                                location.reload();
+                                                                                          //  } else {
+
+                                                                                           // }
+
+                                                                                        }, error: function (request, textStatus, errorThrown) {
+                                                                                            alert("ERROR");
+                                                                                        }
+                                                                                    }); // close ajax
+
+                                                                                    //jQuery("#myModal").remove();
+                                                                                    //response.sendRedirect("ListBookServlet");
+                                                                                    $('#myModal').modal('hide');
+                                                                                    //location.reload();
+
+                                                                                });//saveupdateaccount
+                                                                                //    function someFunction(data) {
+                                                                                //        // Do something with your data
+                                                                                //        //response.sendRedirect("ListBookServlet");
+                                                                                //
+                                                                                //    }
+                                                         
+//delete button 
+                                                                                function deletebutton(books_id) {
+                                                                                    var obj = {"bookid": books_id,
+                                                                                        "bookname": "",
+                                                                                        "author": "",
+                                                                                        "price": "",
+                                                                                        "mode": "delete"};
+                                                                                    //                                                        obj.bookid = $('#books_id').val();
+                                                                                    //                                                        obj.bookname = $('#bookname').val();
+                                                                                    //                                                        obj.author = $('#author').val();
+                                                                                    //                                                        obj.price = $('#price').val();
+                                                                                    //                                                        obj.mode = $('#PPADD').val();
+
+                                                                                    $.ajax({
+                                                                                        url: 'ListBookServlet',
+                                                                                        //                           contentType: "application/json",
+                                                                                        //   dataType: "json",
+                                                                                        //   dataType: 'text',
+                                                                                        type: 'GET',
+                                                                                        data: obj,
+                                                                                        success: function (data) {
+
+                                                                                            //alert(data);
+                                                                                            // if (data == "ok") {
+                                                                                                alert("Alraedy save");
+                                                                                                location.reload();
+                                                                                            //} else {
+
+                                                                                            //}
+
+                                                                                        }, error: function (request, textStatus, errorThrown) {
+                                                                                            alert("ERROR");
+                                                                                        }
+                                                                                    }
+                                                                                    ); // close ajax
+
+                                                                                    //jQuery("#myModal").remove();
+                                                                                    //response.sendRedirect("ListBookServlet");
+                                                                                    $('#myModal').modal('hide');
+                                                                                    //location.reload();
+
+                                                                                };
+                                                                                //    function someFunction(data) {
+                                                                                //        // Do something with your data
+                                                                                //        //response.sendRedirect("ListBookServlet");
+                                                                                //
+                                                                                //    }
+                                                
+
+
+                                                                            </script>    
+                                                                            </html>
 
 
 
