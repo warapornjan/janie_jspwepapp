@@ -331,14 +331,9 @@
                                                                                     //                                                        obj.price = $('#price').val();
                                                                                     //                                                        obj.mode = $('#PPADD').val();
 
-                                                                                    $.ajax({
-                                                                                        url: 'ListBookServlet',
-                                                                                        //                           contentType: "application/json",
-                                                                                        //   dataType: "json",
-                                                                                        //   dataType: 'text',
-                                                                                        type: 'GET',
-                                                                                        data: obj,
-                                                                                        success: function (data) {
+                                                                                    $.get(
+                                                                                     'ListBookServlet?mode=delete&books_id='+books_id,
+                                                                                        function (data) {
 
                                                                                             //alert(data);
                                                                                             // if (data == "ok") {
@@ -348,10 +343,9 @@
 
                                                                                             //}
 
-                                                                                        }, error: function (request, textStatus, errorThrown) {
-                                                                                            alert("ERROR");
+                                                                                        
                                                                                         }
-                                                                                    }
+                                                                                
                                                                                     ); // close ajax
 
                                                                                     //jQuery("#myModal").remove();

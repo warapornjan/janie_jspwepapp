@@ -72,8 +72,8 @@ public class ListBookServlet extends HttpServlet {
         try {
             String output = "{}";
             Connection conn = DBCPUtil.getDatabaseConnectionPool();
-            String mode = (String) s.getAttribute("mode");
-            String bookid = (String) s.getAttribute("books_id");
+            String mode = (String) request.getParameter("mode");
+            String bookid = (String) request.getParameter("books_id");
             
             if (mode != null && mode.equalsIgnoreCase("delete")) {
                 
