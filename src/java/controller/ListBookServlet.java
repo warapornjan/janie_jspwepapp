@@ -85,6 +85,7 @@ public class ListBookServlet extends HttpServlet {
                 
             }
             
+                 
             PreparedStatement preStm = conn.prepareStatement("SELECT * FROM `books` ");
             ResultSet rs = preStm.executeQuery();
             ArrayList<Books> data = new ArrayList<Books>();
@@ -111,7 +112,7 @@ public class ListBookServlet extends HttpServlet {
         } catch (Exception ex) {
             Logger.getLogger(ListBookServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+       
     }
 
     /**

@@ -142,7 +142,7 @@ public class AddServlet extends HttpServlet {
 
             } else if (mode != null && mode.equals("edit")) {
 
-                String command = "UPDATE `books` SET `bookname`=?, `author`=?, `price`=? WHERE `books_id` = ?";
+                String command = "UPDATE `books` SET `bookname`=?, `author`=?, `price`=? WHERE  `books_id` = ?"; //may be use order by 
                 PreparedStatement pst = conn.prepareStatement(command);
                 pst.setString(1, bookname);
                 pst.setString(2, author);

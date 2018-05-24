@@ -2,6 +2,7 @@
 <%@page import="model.Room"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Books"%>
+<%@page import="controller.AddServlet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -26,6 +27,7 @@
 
     </head>
     <body style="background-color: #ffff99; width:100%; font-family: 'Kanit', sans-serif; " >
+        
     <br><br><center><img src='css/pony.png' style="width:20%"></img></center>
         <%
             ArrayList<Books> data = (ArrayList<Books>) request.getAttribute("listdata");
@@ -48,11 +50,12 @@
                 <td colspan="4">No Data</td>
                 <% } else {  %>
                 <% for (int i = 0; i < data.size(); i++) {%>
-                <tr>'
-                    <td width="10%"><%=data.get(i).getBooks_id()%></td>
-                    <td width="27%"><%=data.get(i).getBookname()%></td>
-                    <td width="27%"><%=data.get(i).getAuthor()%></td>
-                    <td width="15%" class="text-right"><%=data.get(i).getPrice()%></td>
+                
+                <tr>
+                    <td width="10%" class="books_id"><%=data.get(i).getBooks_id()%></td>
+                    <td width="27%" class="book_name"><%=data.get(i).getBookname()%></td>
+                    <td width="27%" class="book_author"><%=data.get(i).getAuthor()%></td>
+                    <td width="15%" class="text-right book_price"><%=data.get(i).getPrice()%></td>
 
                     <td width="21%">
                 <center>
@@ -60,7 +63,7 @@
 <!--                    onclick="document.location.href = 'ListBookServlet?mode=delete&books_id=<%=data.get(i).getBooks_id()%>'"-->
 <!--                    <input class="btn btn-warning" value="EDIT" type="button" id="editbutton" onclick="document.location.href = 'AddServlet?mode=edit&books_id=<%=data.get(i).getBooks_id()%>'">-->
 
-                    <input class="btn btn-success" type="button" data-toggle="modal" data-target="#myModal" id="editbutton" value="EDIT">
+                    <input class="btn btn-success editbutton" type="button" data-toggle="modal" data-target="#myModal" value="EDIT" >
 
                     <!--onclick="document.location.href = 'AddServlet'"-->
                     <!-- Modal -->
@@ -81,26 +84,27 @@
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-md-3"> <label for="recipient-name" class="control-label">BOOK ID:</label> </div>
-                                                <div class="col-md-9"><input type="text" class="form-control" id="books_id"> </div>
+                                                <div class="col-md-9"><input type="text" class="form-control" id="books_id" name="bookid" value="oldvalue_bookid_add"  > </div>
+<!--                                                       <div class="col-md-9"><input type="text" class="form-control" id="books_id" value="$('#add_books_id')">-->
 
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-md-3"> <label for="message-text" class="control-label">Book name:</label></div>
-                                                <div class="col-md-9"> <input type="text"  class="form-control" id="bookname"></textarea></div>
+                                                <div class="col-md-9"> <input type="text"  class="form-control" id="bookname" value=""></div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-md-3"> <label for="message-text" class="control-label">Author:</label></div>
-                                                <div class="col-md-9"> <input type="text"  class="form-control" id="author"></textarea></div>
+                                                <div class="col-md-9"> <input type="text"  class="form-control" id="author" value=""></div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-md-3"> <label for="message-text" class="control-label">Price:</label></div>
-                                                <div class="col-md-9"> <input type="text"  class="form-control" id="price"></textarea></div>
+                                                <div class="col-md-9"> <input type="text"  class="form-control" id="price" value=""></div>
                                             </div>
                                         </div>
                                         <!--
@@ -228,7 +232,7 @@
                                                                             </body>
                                                                             <script>
                                                                                 $('#savenewaccount').click(function () {
-                                                                                   // $('#PPADD').val("add");
+                                                                                    // $('#PPADD').val("add");
                                                                                     var obj = {"bookid": $('#add_books_id').val(),
                                                                                         "bookname": $('#add_bookname').val(),
                                                                                         "author": $('#add_author').val(),
@@ -238,7 +242,8 @@
                                                                                     //                                                        obj.bookname = $('#bookname').val();
                                                                                     //                                                        obj.author = $('#author').val();
                                                                                     //                                                        obj.price = $('#price').val();
-                                                                                    //                                                        obj.mode = $('#PPADD').val();
+                                                                                    //       
+                                                                                    //                                                                                                         obj.mode = $('#PPADD').val();
 
                                                                                     $.ajax({
                                                                                         url: 'AddServlet',
@@ -250,9 +255,9 @@
                                                                                         success: function (data) {
 
                                                                                             //alert(data);
-                                                                                           // if (data == "ok") {
-                                                                                                alert("Alraedy save");
-                                                                                                location.reload();
+                                                                                            // if (data == "ok") {
+                                                                                            alert("Alraedy save");
+                                                                                            location.reload();
                                                                                             //} else {
 
                                                                                             //}
@@ -267,12 +272,16 @@
                                                                                     //location.reload();
 
                                                                                 });
-                                                                               //savenewaccount
+                                                                                //savenewaccount
 
 
                                                                                 //saveupdateaccount
                                                                                 $('#saveupdateaccount').click(function () {
                                                                                     
+                                                                                    
+                                                                                    
+                                                                                    
+
                                                                                     var obj = {"bookid": $('#books_id').val(),
                                                                                         "bookname": $('#bookname').val(),
                                                                                         "author": $('#author').val(),
@@ -294,18 +303,21 @@
                                                                                         success: function (data) {
 
                                                                                             //alert(data);
-                                                                                         //   if (data == "ok") {
-                                                                                                alert("Alraedy save");
-                                                                                                location.reload();
-                                                                                          //  } else {
+                                                                                            //   if (data == "ok") {
+                                                                                            alert("Update");
+                                                                                            location.reload();
+                                                                                            //  } else {
 
-                                                                                           // }
+                                                                                            // }
 
                                                                                         }, error: function (request, textStatus, errorThrown) {
                                                                                             alert("ERROR");
                                                                                         }
                                                                                     }); // close ajax
-
+                                                                                   
+                                                                                        
+                                                                                        
+                                                                                        
                                                                                     //jQuery("#myModal").remove();
                                                                                     //response.sendRedirect("ListBookServlet");
                                                                                     $('#myModal').modal('hide');
@@ -317,7 +329,7 @@
                                                                                 //        //response.sendRedirect("ListBookServlet");
                                                                                 //
                                                                                 //    }
-                                                         
+
 //delete button 
                                                                                 function deletebutton(books_id) {
                                                                                     var obj = {"bookid": books_id,
@@ -332,20 +344,34 @@
                                                                                     //                                                        obj.mode = $('#PPADD').val();
 
                                                                                     $.get(
-                                                                                     'ListBookServlet?mode=delete&books_id='+books_id,
-                                                                                        function (data) {
+                                                                                            'ListBookServlet?mode=delete&books_id=' + books_id,
+                                                                                            function (data) {
 
-                                                                                            //alert(data);
-                                                                                            // if (data == "ok") {
-                                                                                                alert("Alraedy save");
-                                                                                                location.reload();
-                                                                                            //} else {
+                                                                                                //alert(data);
+                                                                                                // if (data == "ok") {
+                                                                                                //confirm("Are you sure to  delete");
 
-                                                                                            //}
+                                                                                               // location.reload();
 
-                                                                                        
-                                                                                        }
-                                                                                
+
+                                                                                                var txt;
+                                                                                                var r = confirm("Are you sure to  delete");
+                                                                                                if (r == true) {
+                                                                                                    txt = "You pressed OK!";
+                                                                                                    location.reload();
+                                                                                                    
+                                                                                                } else {
+                                                                                                    txt = "You pressed Cancel!";
+                                                                                                }
+//                                                                                                var x = confirm("Are you sure you want to delete?");
+//                                                                                                if (x)
+//                                                                                                    return true;
+//                                                                                                    location.reload();
+//                                                                                                else
+//                                                                                                    return false;
+                                                                                            alert(txt);
+                                                                                            }
+
                                                                                     ); // close ajax
 
                                                                                     //jQuery("#myModal").remove();
@@ -353,15 +379,36 @@
                                                                                     $('#myModal').modal('hide');
                                                                                     //location.reload();
 
-                                                                                };
-                                                                                //    function someFunction(data) {
-                                                                                //        // Do something with your data
-                                                                                //        //response.sendRedirect("ListBookServlet");
-                                                                                //
-                                                                                //    }
-                                                
-
-
+                                                                                }
+                                                                                ;
+                                                                                
+                                                                                /*$('.editbutton').click(function  (){
+                                                                                    var oldvalue_bookid_add = ($("#add_books_id").val());
+                                                                                    var oldvalue_bookname_add = ($("#add_bookname").val());
+                                                                                    var oldvalue_author_add = ($("#add_author'").val());
+                                                                                    var oldvalue_price_add = ($("#add_price'").val());
+                                                                                   
+                                                                                })*/
+                                                                                
+                                                                                $('.editbutton').click(function() {
+                                                                                    var tr = $(this).parent().parent().parent()
+                                                                                    var book_name = tr.find('.book_name').text()
+                                                                                    console.log(book_name);
+                                                                                    var books_id = tr.find('.books_id').text()
+                                                                                    console.log(books_id);
+                                                                                    var book_author = tr.find('.book_author').text()
+                                                                                    console.log(author);
+                                                                                    var book_price = tr.find('.book_price').text()
+                                                                                    console.log(price);
+                                                                                    var book_mode = tr.find('.mode').text()
+                                                                                    console.log(book_mode);
+                                                                                    
+                                                                                    $("#myModal #books_id").val(books_id)
+                                                                                    $("#myModal #bookname").val(book_name)
+                                                                                    $("#myModal #author").val(book_author)
+                                                                                    $("#myModal #price").val(book_price)
+                                                                                   //  $("#myModal #mode").val(book_mode)
+                                                                                })
                                                                             </script>    
                                                                             </html>
 

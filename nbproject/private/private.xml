@@ -4,16 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Jane/Documents/GitHub/janie_jspwepapp/web/pages/EditModel.jsp</file>
-            <file>file:/C:/Users/Jane/Documents/GitHub/janie_jspwepapp/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/Jane/Documents/GitHub/janie_jspwepapp/web/pages/ListBook.jsp</file>
-            <file>file:/C:/Users/Jane/Documents/GitHub/janie_jspwepapp/src/java/model/Books.java</file>
-            <file>file:/C:/Users/Jane/Documents/GitHub/janie_jspwepapp/web/index.jsp</file>
-            <file>file:/C:/Users/Jane/Documents/GitHub/janie_jspwepapp/src/java/controller/EditServlet.java</file>
             <file>file:/C:/Users/Jane/Documents/GitHub/janie_jspwepapp/src/java/controller/AddServlet.java</file>
             <file>file:/C:/Users/Jane/Documents/GitHub/janie_jspwepapp/web/pages/AddModel.jsp</file>
             <file>file:/C:/Users/Jane/Documents/GitHub/janie_jspwepapp/web/pages/EditForm.jsp</file>
             <file>file:/C:/Users/Jane/Documents/GitHub/janie_jspwepapp/src/java/controller/ListBookServlet.java</file>
-            <file>file:/C:/Users/Jane/Documents/GitHub/janie_jspwepapp/src/java/model/Room.java</file>
         </group>
     </open-files>
 </project-private>
